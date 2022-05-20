@@ -27,6 +27,7 @@ const ClipStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Clip" component={ClipScreen} />
+      <Stack.Screen name="Article" component={ArticleScreen} />
     </Stack.Navigator>
   );
 };
@@ -35,10 +36,13 @@ const screenOption = ({ route }) => ({
   tabBarIcon: ({ color, size }) => {
     let iconName;
 
-    if (route.name === "Home") {
-      iconName = "home";
-    } else if (route.name === "Clip") {
-      iconName = "bookmark";
+    switch (route.name) {
+      case "Home":
+        iconName = "home";
+        break;
+      case "Clip":
+        iconName = "bookmark";
+        break;
     }
     return <FontAwesome name={iconName} size={size} color={color} />;
   },
